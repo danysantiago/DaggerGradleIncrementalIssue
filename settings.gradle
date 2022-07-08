@@ -1,0 +1,4 @@
+rootProject.name = 'DaggerIncrementalIssue'
+include 'untitled'
+include 'library'
+

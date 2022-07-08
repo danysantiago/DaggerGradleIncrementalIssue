@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // So I can attach a debugger
+    compileOnly gradleApi()
+    compileOnly 'com.google.dagger:dagger-compiler:2.42'
+
+    implementation(project(":library"))
+
+    implementation 'com.google.dagger:dagger:2.42'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.42'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs.addAll(["-Adagger.fastInit=enabled", "-XprintProcessorInfo", "-XprintRounds"])
+}
+
+test {
+    useJUnitPlatform()
+}
