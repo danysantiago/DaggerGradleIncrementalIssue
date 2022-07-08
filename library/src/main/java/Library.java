@@ -9,7 +9,7 @@ public class Library {
 
     // To reproduce bug:
     // Change the name of this method, i.e. from doSomething1() to doSomething2() in an incremental change.
-    public void doSomething4() {
+    public void doSomething1() {
 
     }
 }
